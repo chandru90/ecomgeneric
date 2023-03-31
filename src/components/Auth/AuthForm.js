@@ -3,6 +3,7 @@ import { useState, useRef, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import AuthContext from '../Store/auth-context';
+import CartContext from '../Store/cart-context';
 import classes from './AuthForm.module.css';
 
 const AuthForm = () => {
@@ -11,6 +12,7 @@ const AuthForm = () => {
   const emailuserref=useRef()
   const passworduseref =useRef()
   const authctx=useContext(AuthContext)
+  const cartctx=useContext(CartContext)
   const switchAuthModeHandler = () => {
     setIsLogin((prevState) => !prevState);
   };
@@ -42,13 +44,16 @@ const AuthForm = () => {
     {
       
       return res.json().then(data=>{
+        console.log(data)
+        console.log(data.email)
         authctx.login(data.idToken)
+       
         history.replace('/')
       })
     }
     else{
       res.json().then(data=>{
-        console.log(data)
+        console.log(data.email)
       })
     }
    })

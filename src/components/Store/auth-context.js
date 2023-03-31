@@ -1,5 +1,7 @@
 import { useState } from "react"
 import React from "react"
+import { Link } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 
 const AuthContext=React.createContext({
     token: '',
@@ -10,6 +12,7 @@ const AuthContext=React.createContext({
 })
 
 export const AuthContextProvider=(props)=>{
+    
     const inittoken =localStorage.getItem('token')
     const[token,setToken]=useState(inittoken)
     const userIsLoggedin=!!token
@@ -20,6 +23,8 @@ export const AuthContextProvider=(props)=>{
     const logouthandler=()=>{
     setToken(null)
     localStorage.removeItem(token)
+   
+   
 }
 const contextvalue={
     token :token,

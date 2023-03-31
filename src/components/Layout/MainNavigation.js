@@ -24,12 +24,15 @@ const MainNavigation = () => {
           <li>
             <Link to='/profile'>Profile</Link>
           </li>}
+          
           {isLoggedIn &&
           <li>
-            <Link to='/Prod'>Products</Link>
-          </li>}
+            <Link to='/Cart'>Cart</Link>
+           </li>}
+          
           {isLoggedIn &&  <li>
-            <button onClick={logouthandler}>Logout</button>
+            <button onClick={logouthandler}><Link to='auth'>Logout</Link>
+            </button>
           </li>}
           
         </ul>
