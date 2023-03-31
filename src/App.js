@@ -4,6 +4,8 @@ import UserProfile from './components/Profile/UserProfile';
 import AuthPage from './pages/AuthPage';
 import HomePage from './pages/HomePage';
 import Products from './components/Prod/Products';
+import Cart from './components/Cart/Cart';
+import HeaderCartButton from './components/Cart/Headercartbutton';
 
 function App() {
   return (
@@ -20,6 +22,9 @@ function App() {
         </Route>
         <Route path='/Prod'>
           <Products/>
+        </Route>
+        <Route path='/Headercartbutton'>
+          <HeaderCartButton/>
         </Route>
         </Switch>
     </Layout>

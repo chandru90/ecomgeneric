@@ -1,28 +1,30 @@
 import classes from './Promi.module.css'
 import Promif from './Promif';
 import { useContext } from 'react';
-//import CartContext from '../../../Store/cart-context';
+import CartContext from '../Store/cart-context';
 import { Card, Row,Col, Container } from 'react-bootstrap';
 //import image from '../img1.jpeg'
 
 
 const Promi=(props)=>{
-   //const cartCtx = useContext(CartContext)
+   const cartCtx = useContext(CartContext)
    //const price ='$${props.price.toFixed(2)}';
    const price = `Rs${props.price.toFixed(2)}`;
-/*
+
    const addToCartHandler=(amount)=>{
     cartCtx.addItem({
         id :props.id,
         name: props.name,
         amount:amount,
         price:props.price,
-        imageUrl:props.imageUrl
+        imageUrl:props.imageUrl,
+       // email:props.data,
+        
       }  )
    }
-
-   line 37   <Promif onAddToCart ={addToCartHandler}></Promif>
-   */
+   
+   
+ 
     return<Container>
        
         <Row xs={2}>
@@ -36,7 +38,7 @@ const Promi=(props)=>{
         <div >{props.name}</div>
         <div className={classes.description}>{props.description}</div>
         <div className={classes.price}>{price}</div>
-     
+        <Promif onAddToCart ={addToCartHandler}></Promif>
         </Card.Body>
     
         </Card>
