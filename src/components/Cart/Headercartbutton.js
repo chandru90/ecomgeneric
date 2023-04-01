@@ -1,4 +1,4 @@
-import CartIcon from '../Cart/Carticon';
+import CartIcon from './Carticon';
 import classes from './Headercartbutton.module.css';
 import { useContext } from 'react';
 import CartContext from '../Store/cart-context';

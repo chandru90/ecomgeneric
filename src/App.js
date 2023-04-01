@@ -23,8 +23,8 @@ function App() {
         <Route path='/Prod'>
           <Products/>
         </Route>
-        <Route path='/Headercartbutton'>
-          <HeaderCartButton/>
+        <Route path='/Cart'>
+          <Cart/>
         </Route>
         </Switch>
     </Layout>
