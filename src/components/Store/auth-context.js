@@ -2,6 +2,8 @@ import { useState } from "react"
 import React from "react"
 import { Link } from "react-router-dom"
 import { useHistory } from "react-router-dom"
+import CartContext from "./cart-context"
+import { useContext } from "react"
 
 const AuthContext=React.createContext({
     token: '',
@@ -12,13 +14,21 @@ const AuthContext=React.createContext({
 })
 
 export const AuthContextProvider=(props)=>{
+    const crtctx=useContext(CartContext)
     
-    const inittoken =localStorage.getItem('token')
-    const[token,setToken]=useState(inittoken)
+    const inittoken =localStorage.getItem('token')    
+    const localemail=localStorage.getItem('emailid')
+    crtctx.setEmail(localemail)
+    console.log("localemail"+localemail)
+    const [token,setToken,]=useState(inittoken)
     const userIsLoggedin=!!token
-    const loginhandler=(token)=>{
+    const loginhandler=(token,emailid)=>{
+        console.log("Email:"+emailid)
         setToken(token)
+       
+        //setEmailId(emailId)
         localStorage.setItem('token' ,token)
+        localStorage.setItem('emailid',emailid)
     }
     const logouthandler=()=>{
     setToken(null)
@@ -30,7 +40,8 @@ const contextvalue={
     token :token,
     isLoggedIn:userIsLoggedin,
     login:loginhandler,
-    logout:logouthandler
+    logout:logouthandler ,
+    
 }
     return <AuthContext.Provider value={contextvalue}>{props.children}</AuthContext.Provider>
 }

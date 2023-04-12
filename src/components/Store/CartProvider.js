@@ -74,7 +74,7 @@ const CartProvider = (props) => {
   useEffect(() => {
     const postData = async () => {
       try {
-        await axios.post('https://crudcrud.com/api/be7b5eb3d5a04312866931a238cb79e0/cartdetails1', { cartItems: cartState.items, totalAmount: cartState.totalAmount });
+        await axios.post('https://crudcrud.com/api/95e5b0b68e5f4aaead2c838fc5089cd5/cartdetails ', { cartItems: cartState.items, totalAmount: cartState.totalAmount });
       } catch (error) {
         console.log(error);
       }

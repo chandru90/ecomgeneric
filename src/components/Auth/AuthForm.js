@@ -46,7 +46,7 @@ const AuthForm = () => {
       return res.json().then(data=>{
         console.log(data)
         console.log(data.email)
-        authctx.login(data.idToken)
+        authctx.login(data.idToken,data.email)
        
         history.replace('/')
       })
