@@ -6,10 +6,10 @@ import CartContext from '../Store/cart-context';
 import CartItem from './Cartitem';
 
 const Cart1 = (props) => {
-  const [cartData, setCartData] = useState({ items: [], totalAmount: 0 });
+  const [cartData, setCartData] = useState({items:[],totalAmount:0});
   const cartCtx = useContext(CartContext);
-  const totalAmount = `Rs${cartData.totalAmount}`;
-  const hasItems = cartData.items?.length > 0;
+  const totalAmount = `Rs${cartData?.totalAmount || 0}`;
+  const hasItems = cartData?.items?.length > 0;
 
   const cartItemRemoveHandler = (id) => {
     cartCtx.removeItem(id);
@@ -22,8 +22,11 @@ const Cart1 = (props) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://crudcrud.com/api/95e5b0b68e5f4aaead2c838fc5089cd5/cartdetails');
-        setCartData(response.data);
+        const response = await axios.get('https://crudcrud.com/api/d56e3a3094f0461db964521107381326/cartdetails');
+        
+        setCartData({items:response.data.cartItems,totalAmount:response.data.totalAmount});
+        console.log(response.data.totalAmount)
+        console.log(response.data)
       } catch (error) {
         console.log(error);
       }
@@ -31,9 +34,9 @@ const Cart1 = (props) => {
     fetchData();
   }, []);
 
-  const cartDetails = cartData.items ? (
+  const cartDetails = cartData ? 
     <ul className={classes['cart-items']}>
-      {cartData.items.map((item) => (
+      {cartData.items?.map((item) => (
         <CartItem
           key={item.id}
           name={item.name}
