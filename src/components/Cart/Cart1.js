@@ -34,7 +34,7 @@ const Cart1 = (props) => {
     fetchData();
   }, []);
 
-  const cartDetails = cartData ? 
+  const cartDetails = cartData ? (
     <ul className={classes['cart-items']}>
       {cartData.items?.map((item) => (
         <CartItem

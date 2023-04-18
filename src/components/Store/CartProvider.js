@@ -61,6 +61,11 @@ const cartReducer = (state, action) => {
 };
 
 const CartProvider = (props) => {
+  const email =localStorage.getItem('emailid')
+  console.log("lasst email"+email)
+ // const email1 =email.replace(/[@]/g, '')
+  //const email2 =email1.replace(/[.]/g, '')
+ //console.log("simpleemail"+email2)
   const [cartState, dispatchCartAction] = useReducer(cartReducer, defaultCartState);
 
   const addItemToCartHandler = (item) => {
@@ -74,7 +79,8 @@ const CartProvider = (props) => {
   useEffect(() => {
     const postData = async () => {
       try {
-        await axios.post('https://crudcrud.com/api/95e5b0b68e5f4aaead2c838fc5089cd5/cartdetails ', { cartItems: cartState.items, totalAmount: cartState.totalAmount });
+        await axios.post(`https://crudcrud.com/api/d56e3a3094f0461db964521107381326/cartdetails` ,{email, cartItems: cartState.items, totalAmount: cartState.totalAmount });
+
       } catch (error) {
         console.log(error);
       }
